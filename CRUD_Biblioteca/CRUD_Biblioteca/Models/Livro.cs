@@ -1,0 +1,15 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace CRUD_Biblioteca.Models
+{
+    public class Livro
+    {
+        public virtual int Id { get; set; }
+        public virtual Autor Autor { get; set; }
+        public virtual int QtdeEstoque { get; set; }
+
+    }
+}

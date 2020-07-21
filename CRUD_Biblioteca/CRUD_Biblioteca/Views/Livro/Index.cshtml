@@ -1,0 +1,50 @@
+﻿@model IEnumerable<CRUD_Biblioteca.Models.Livro>
+
+@{
+    ViewData["Title"] = "Lista de Livros";
+}
+
+    <h1>Lista de Livros</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-outline-success btn-sm">Adicionar Livro</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Autor.Nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.QtdeEstoque)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <th>
+                @Html.DisplayFor(modelItem => item.Autor.Nome)
+            </th>
+            <td>
+                @Html.DisplayFor(modelItem => item.QtdeEstoque)
+            </td>
+            <td>
+                <a asp-controller="Livro" asp-action="Update" asp-route-Id="@item.Id" class="btn btn-outline-info btn-sm">
+                    Atualizar
+                </a> &emsp;
+                <form asp-controller="Livro" asp-action="Delete" asp-route-Id="@item.Id" onclick="confirm('Deseja excluir o livro ?')">
+                    <button type="submit" class="btn btn-outline-danger btn-sm">Excluir</button>
+                </form>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

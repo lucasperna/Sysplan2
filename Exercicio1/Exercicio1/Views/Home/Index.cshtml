@@ -1,0 +1,31 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+@using (Html.BeginForm("SendCSV", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class="form-group">
+        <input type="file" id="dataFile" class="form-control" name="fileUpload" />
+    </div>
+
+    <div class="form-group">
+        <input type="submit" value="Send" class="btn btn-primary" />
+    </div>
+}
+
+@if (ViewBag.Items != null)
+{
+    <div>
+        <h1>@ViewBag.msg</h1>
+
+        <h3>Médias:</h3>
+        @foreach (var item in ViewBag.Items)
+        {
+            <div class="row" style="margin-bottom: 10px;">
+                <div class="col-md-12">
+                    <p>@item.Cidade : @item.Idade</p>
+                </div>
+            </div>
+        }
+    </div>
+}

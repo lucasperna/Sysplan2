@@ -1,0 +1,44 @@
+﻿@model IEnumerable<CRUD_Biblioteca.Models.Autor>
+
+@{
+    ViewData["Title"] = "Lista de Autores";
+}
+
+    <h1>Lista de Autores</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-outline-success btn-sm">Adicionar Autor</a>
+</p>
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nome)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+            <td>
+                <a asp-controller="Autor" asp-action="Update" asp-route-Id="@item.Id" class="btn btn-outline-info btn-sm">
+                    Atualizar
+                </a> &emsp;
+                <form asp-controller="Autor" asp-action="Delete" asp-route-Id="@item.Id" onclick="confirm('Deseja excluir o autor @item.Nome ?')">
+                    <button type="submit" class="btn btn-outline-danger btn-sm">Excluir</button>
+                </form>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,0 +1,31 @@
+﻿@model CRUD_Biblioteca.Models.Livro
+
+@{
+    ViewData["Title"] = "Adicionar Livro";
+}
+
+<h4>Adicionar Livro</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label class="control-label">Autor</label>
+                @Html.DropDownListFor(
+        x => x.Autor.Id,
+        (IEnumerable<SelectListItem>)ViewData["Autores"]
+    )
+            </div>
+                <div class="form-group">
+                    <label asp-for="QtdeEstoque" class="control-label">Quantidade em Estoque</label>
+                    <input asp-for="QtdeEstoque" class="form-control" />
+                    <span asp-validation-for="QtdeEstoque" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Salvar" class="btn btn-outline-success btn-sm" /> &emsp;
+                    <a asp-action="Index" class="btn btn-link btn-sm">Voltar</a>
+                </div>
+        </form>
+    </div>
+</div>
